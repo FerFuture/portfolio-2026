@@ -1,0 +1,80 @@
+@import "@fontsource/inter/latin-400.css";
+@import "@fontsource/inter/latin-500.css";
+@import "@fontsource/inter/latin-600.css";
+@import "@fontsource/inter/latin-700.css";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background-color: #050507;
+  color: rgba(255, 255, 255, 0.92);
+  font-family: Inter, system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .hero-headline-glow {
+    animation: hero-glow-pulse 5s ease-in-out infinite;
+  }
+
+  .hero-glitch-once {
+    animation: hero-glitch 0.72s steps(2, end) forwards;
+  }
+}
+
+@keyframes hero-glow-pulse {
+  0%,
+  100% {
+    filter: drop-shadow(0 0 18px rgba(139, 92, 246, 0.14))
+      drop-shadow(0 0 36px rgba(59, 130, 246, 0.08));
+  }
+  50% {
+    filter: drop-shadow(0 0 26px rgba(139, 92, 246, 0.32))
+      drop-shadow(0 0 52px rgba(59, 130, 246, 0.14));
+  }
+}
+
+@keyframes hero-glitch {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0);
+    text-shadow: none;
+  }
+  20% {
+    transform: translate3d(-1px, 0.5px, 0);
+    text-shadow:
+      1.5px 0 rgba(139, 92, 246, 0.35),
+      -1.5px 0 rgba(59, 130, 246, 0.28);
+  }
+  40% {
+    transform: translate3d(1px, -0.5px, 0);
+  }
+  60% {
+    transform: translate3d(-0.5px, 0, 0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-headline-glow,
+  .hero-glitch-once {
+    animation: none;
+  }
+}
