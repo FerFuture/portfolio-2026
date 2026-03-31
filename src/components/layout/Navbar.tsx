@@ -5,6 +5,7 @@ import {
   useMotionValueEvent,
   AnimatePresence,
 } from "framer-motion";
+import { WHATSAPP_URL } from "../../constants/whatsapp";
 import { NavOrbitMark } from "../ui/OrbitBrandMark";
 
 const links = [
@@ -57,12 +58,12 @@ export function Navbar() {
 
         <ul className="hidden items-center gap-0.5 md:flex lg:gap-1">
           {links.map((l) => (
-            <li key={l.href}>
+            <li key={l.href} className="flex items-center">
               <a
                 href={l.href}
-                className="rounded-lg px-3 py-2.5 text-base text-white/60 transition-colors hover:bg-white/[0.06] hover:text-white/95 lg:px-3.5 lg:text-[1.05rem]"
+                className="nav-link-item inline-flex origin-center items-center justify-center px-3 py-2.5 transition-transform duration-300 ease-out md:hover:scale-[1.1] lg:px-3.5"
               >
-                {l.label}
+                <span className="nav-link-label">{l.label}</span>
               </a>
             </li>
           ))}
@@ -70,7 +71,9 @@ export function Navbar() {
 
         <div className="flex items-center gap-2 md:gap-3">
           <a
-            href="#contacto"
+            href={WHATSAPP_URL}
+            target="_blank"
+            rel="noopener noreferrer"
             className="hidden rounded-full border border-neon-purple/50 bg-neon-purple/10 px-5 py-2.5 text-base font-medium text-white shadow-glow-purple transition-[box-shadow,border-color,background-color,transform] duration-300 ease-out hover:scale-[1.03] hover:border-neon-purple/70 hover:bg-neon-purple/20 hover:shadow-[0_0_50px_-12px_rgba(139,92,246,0.55)] active:scale-[0.98] md:inline-flex lg:px-6 lg:py-3 lg:text-[1.05rem]"
           >
             Pedí tu web
@@ -101,7 +104,7 @@ export function Navbar() {
                 <li key={l.href}>
                   <a
                     href={l.href}
-                    className="block rounded-xl px-4 py-3.5 text-base text-white/80 hover:bg-white/[0.06] hover:text-white"
+                    className="block origin-left rounded-xl px-4 py-3.5 text-base text-white/80 transition-[color,background-color,box-shadow,transform] duration-300 ease-out hover:bg-white/[0.08] hover:text-white hover:shadow-[0_0_28px_-8px_rgba(139,92,246,0.4),0_0_20px_-10px_rgba(59,130,246,0.25)] active:scale-[0.99] hover:scale-[1.02]"
                     onClick={() => setOpen(false)}
                   >
                     {l.label}
@@ -110,8 +113,10 @@ export function Navbar() {
               ))}
               <li className="px-2 pb-2 pt-1">
                 <a
-                  href="#contacto"
-                  className="block rounded-xl border border-neon-purple/40 bg-neon-purple/15 py-3.5 text-center text-base font-medium text-white"
+                  href={WHATSAPP_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block rounded-xl border border-neon-purple/40 bg-neon-purple/15 py-3.5 text-center text-base font-medium text-white transition-[box-shadow,transform,border-color,background-color] duration-300 ease-out hover:scale-[1.02] hover:border-neon-purple/60 hover:bg-neon-purple/22 hover:shadow-[0_0_40px_-8px_rgba(139,92,246,0.5),0_0_28px_-10px_rgba(59,130,246,0.3)] active:scale-[0.98]"
                   onClick={() => setOpen(false)}
                 >
                   Pedí tu web

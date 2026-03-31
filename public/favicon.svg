@@ -1,11 +1,11 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="none">
   <rect width="32" height="32" rx="8" fill="#050507"/>
   <defs>
-    <linearGradient id="vite-orbit" x1="0%" y1="0%" x2="100%" y2="100%">
+    <linearGradient id="fj-orbit" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#8b5cf6"/>
       <stop offset="100%" stop-color="#3b82f6"/>
     </linearGradient>
   </defs>
   <circle cx="16" cy="16" r="9" stroke="rgba(255,255,255,0.14)" stroke-width="1.5" fill="none"/>
-  <circle cx="16" cy="16" r="9" stroke="url(#vite-orbit)" stroke-width="1.75" stroke-linecap="round" fill="none"/>
+  <circle cx="16" cy="16" r="9" stroke="url(#fj-orbit)" stroke-width="1.75" stroke-linecap="round" fill="none"/>
 </svg>

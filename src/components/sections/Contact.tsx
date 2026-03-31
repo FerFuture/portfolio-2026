@@ -1,8 +1,6 @@
 import { motion } from "framer-motion";
+import { WHATSAPP_URL } from "../../constants/whatsapp";
 import { MagneticLink } from "../ui/MagneticLink";
-
-/** Replace with your country code + number, no symbols (e.g. 34600111222). */
-const WHATSAPP_URL = "https://wa.me/0000000000000";
 
 export function Contact() {
   return (

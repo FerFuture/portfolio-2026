@@ -78,3 +78,26 @@ body {
     animation: none;
   }
 }
+
+/* Navbar links: glow on the letters only (no box-shadow “card”) */
+@layer components {
+  .nav-link-label {
+    @apply text-base text-white/60 transition-[color,text-shadow] duration-300 ease-out lg:text-[1.05rem];
+  }
+
+  @media (hover: hover) {
+    .nav-link-item:hover .nav-link-label {
+      color: rgb(255 255 255);
+      text-shadow:
+        0 0 14px rgba(139, 92, 246, 0.95),
+        0 0 28px rgba(59, 130, 246, 0.55),
+        0 0 48px rgba(139, 92, 246, 0.22);
+    }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nav-link-item:hover .nav-link-label {
+    text-shadow: none;
+  }
+}
