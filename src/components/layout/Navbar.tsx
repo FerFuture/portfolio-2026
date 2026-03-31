@@ -17,6 +17,18 @@ const links = [
   { href: "#contacto", label: "Contacto" },
 ];
 
+/** Móvil: cerrar el drawer desmonta el <a> antes de que iOS/Android apliquen el hash; scroll manual tras el cierre. */
+const MOBILE_MENU_CLOSE_MS = 320;
+
+function scrollToSectionHash(hash: string) {
+  const id = hash.replace(/^#/, "");
+  const el = document.getElementById(id);
+  if (!el) return;
+  const smooth = !window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  el.scrollIntoView({ behavior: smooth ? "smooth" : "auto", block: "start" });
+  window.history.replaceState(null, "", hash);
+}
+
 export function Navbar() {
   const { scrollY } = useScroll();
   const [scrolled, setScrolled] = useState(false);
@@ -43,7 +55,22 @@ export function Navbar() {
         <a
           href="#inicio"
           className="flex min-w-0 items-center gap-2.5 text-white no-underline md:gap-3"
-          onClick={() => setOpen(false)}
+          onClick={(e) => {
+            const wasOpen = open;
+            setOpen(false);
+            if (
+              typeof window === "undefined" ||
+              window.innerWidth >= 768 ||
+              !wasOpen
+            ) {
+              return;
+            }
+            e.preventDefault();
+            window.setTimeout(
+              () => scrollToSectionHash("#inicio"),
+              MOBILE_MENU_CLOSE_MS
+            );
+          }}
         >
           <span
             className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border border-white/15 bg-white/[0.04] shadow-[0_0_20px_-6px_rgba(139,92,246,0.35)] md:h-10 md:w-10"
@@ -104,8 +131,16 @@ export function Navbar() {
                 <li key={l.href}>
                   <a
                     href={l.href}
-                    className="block origin-left rounded-xl px-4 py-3.5 text-base text-white/80 transition-[color,background-color,box-shadow,transform] duration-300 ease-out hover:bg-white/[0.08] hover:text-white hover:shadow-[0_0_28px_-8px_rgba(139,92,246,0.4),0_0_20px_-10px_rgba(59,130,246,0.25)] active:scale-[0.99] hover:scale-[1.02]"
-                    onClick={() => setOpen(false)}
+                    className="block origin-left touch-manipulation rounded-xl px-4 py-3.5 text-base text-white/80 transition-[color,background-color,box-shadow,transform] duration-300 ease-out hover:bg-white/[0.08] hover:text-white hover:shadow-[0_0_28px_-8px_rgba(139,92,246,0.4),0_0_20px_-10px_rgba(59,130,246,0.25)] active:scale-[0.99] hover:scale-[1.02]"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      setOpen(false);
+                      const hash = l.href;
+                      window.setTimeout(
+                        () => scrollToSectionHash(hash),
+                        MOBILE_MENU_CLOSE_MS
+                      );
+                    }}
                   >
                     {l.label}
                   </a>
