@@ -4,6 +4,8 @@ export interface Project {
   description: string;
   label: string;
   image: string;
+  /** Optional alt for the preview image */
+  imageAlt?: string;
   /** Optional URL for “Ver proyecto”; defaults to in-page anchor */
   caseStudyUrl?: string;
 }
@@ -19,11 +21,14 @@ export const projects: Project[] = [
   },
   {
     id: "2",
-    title: "Restaurante Sabor Urbano",
+    title: "Mary Mirari — Bijouterie",
     description:
-      "Menú digital, reservas y mapa integrado para convertir búsquedas en mesas ocupadas.",
-    label: "Negocio local",
-    image: "https://picsum.photos/seed/sabor-urbano/800/500",
+      "Catálogo con búsqueda, carrito y pedidos con pago por transferencia o efectivo: elegancia cotidiana en collares, pulseras y accesorios.",
+    label: "E-commerce",
+    image:
+      "https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=800&h=500&fit=crop&q=80",
+    caseStudyUrl: "https://mary-six-eta.vercel.app/",
+    imageAlt: "Bijouterie y accesorios — detalle de piezas en vitrina",
   },
   {
     id: "3",

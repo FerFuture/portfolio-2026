@@ -61,7 +61,7 @@ export function Projects() {
               <div className="relative aspect-[16/10] overflow-hidden">
                 <img
                   src={p.image}
-                  alt=""
+                  alt={p.imageAlt ?? ""}
                   width={800}
                   height={500}
                   loading="lazy"
